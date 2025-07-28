@@ -98,3 +98,4 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
     toggle.classList.toggle('open', !isOpen);
   });
 });
+//This should work
