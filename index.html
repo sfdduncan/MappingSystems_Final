@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NYC POI Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="container">
+    <div id="map"></div>
+    <div id="sidebar">
+    <div id="poi-count" class="ui-box square">
+      <div class="count-title">POIs in View</div>
+      <div id="count" class="count-number">0</div>
+    </div>
+
+    <div id="filter-box" class="ui-box">
+      <div class="filter-group">
+        <label><input type="checkbox" id="toggle-osm" checked> Show CommonPlace POIs</label>
+        <div class="dropdown-toggle" data-target="osm-info"></div>
+        <div class="dropdown-content" id="osm-info">
+          <p>NYC CommonPlace POIs are official government-curated points of interest such as schools, hospitals, and public facilities. They are more selective but highly reliable.</p>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label><input type="checkbox" id="toggle-common" checked> Show OpenStreetMap POIs</label>
+        <div class="dropdown-toggle" data-target="common-info"></div>
+        <div class="dropdown-content" id="common-info">
+          <p>OpenStreetMap POIs are crowd-sourced by volunteers and can include any tagged features like restaurants, ATMs, or libraries. They may include informal or unofficial places.</p>
+        </div>
+      </div>
+    </div>
+
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
