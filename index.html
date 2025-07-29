@@ -9,32 +9,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet" />
 </head>
 <body>
+
+    <div id="intro">
+      <h1>Mapping New York City POIs</h1>
+      <p>
+        This map compares two distinct datasets of Points of Interest (POIs) in New York City: <strong>OpenStreetMap</strong> (crowd-sourced) and <strong>CommonPlace</strong> (government-curated). While OpenStreetMap reflects informal, user-defined spaces, CommonPlace presents an official, institutional perspective on what is publicly significant. By mapping and contrasting the two, this project raises questions about who has the authority to define place, what is considered “official,” and whose spaces are rendered visible in our digital geographies.
+      </p>
+    </div>
   <div id="container">
     <div id="map"></div>
     <div id="sidebar">
-    <div id="poi-count" class="ui-box square">
-      <div class="count-title">POIs in View</div>
-      <div id="count" class="count-number">0</div>
-    </div>
-
-    <div id="filter-box" class="ui-box">
-      <div class="filter-group">
-        <label><input type="checkbox" id="toggle-osm" checked> Show CommonPlace POIs</label>
-        <div class="dropdown-toggle" data-target="osm-info"></div>
-        <div class="dropdown-content" id="osm-info">
-          <p>NYC CommonPlace POIs are official government-curated points of interest such as schools, hospitals, and public facilities. They are more selective but highly reliable.</p>
-        </div>
+      <!-- OSM POI Counter -->
+      <div id="osm-count-box" class="counter-box">
+        <div class="count-title">OSM POIs</div>
+        <div class="count-number" id="osm-count">0</div>
       </div>
 
-      <div class="filter-group">
-        <label><input type="checkbox" id="toggle-common" checked> Show OpenStreetMap POIs</label>
-        <div class="dropdown-toggle" data-target="common-info"></div>
-        <div class="dropdown-content" id="common-info">
-          <p>OpenStreetMap POIs are crowd-sourced by volunteers and can include any tagged features like restaurants, ATMs, or libraries. They may include informal or unofficial places.</p>
+      <!-- CommonPlace POI Counter -->
+      <div id="common-count-box" class="counter-box">
+        <div class="count-title">CommonPlace POIs</div>
+        <div class="count-number" id="common-count">0</div>
+      </div>
+
+      <!-- Filter box -->
+      <div id="filter-box" class="ui-box">
+        <div class="filter-group">
+          <label><input type="checkbox" id="toggle-osm" checked> Show OSM POIs</label>
+          <div class="dropdown-toggle" data-target="osm-info">About</div>
+          <div class="dropdown-content" id="osm-info">
+            <p><strong>OpenStreetMap (OSM)</strong> is a global, collaborative mapping platform where volunteers contribute geographic data about the world around them. POIs in OSM are created and tagged by everyday users, meaning the dataset reflects informal, hyperlocal knowledge—restaurants, shops, places of worship, and more. This data is dynamic and democratic, but varies in accuracy and completeness depending on who participates and which places are prioritized.</p>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label><input type="checkbox" id="toggle-common" checked> Show CommonPlace POIs</label>
+          <div class="dropdown-toggle" data-target="common-info">About</div>
+          <div class="dropdown-content" id="common-info">
+            <p><strong>CommonPlace</strong> is a curated dataset compiled by New York City government agencies, representing officially recognized Points of Interest such as schools, hospitals, libraries, and civic facilities. These locations are often tied to funding, governance, and regulation, offering a more institutional view of public space. While precise and vetted, the dataset reflects top-down definitions of value and may overlook grassroots or community-defined spaces.</p>
+          </div>
         </div>
       </div>
     </div>
-
+  </div>
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
   <script src="main.js"></script>
