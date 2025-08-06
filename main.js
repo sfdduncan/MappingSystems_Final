@@ -14,7 +14,7 @@ map.on("load", async () => {
   try {
     const [osmData, commonData] = await Promise.all([
       fetch("https://storage.googleapis.com/nycpoiosm/NYC_OSM_POI.geojson").then(r => r.json()),
-      fetch("NYC_POI.geojson").then(r => r.json())  // Local file
+      fetch("https://storage.googleapis.com/nycpoiosm/NYC_POI.geojson").then(r => r.json())  // Local file
     ]);
 
     osmFeatures = osmData.features;
