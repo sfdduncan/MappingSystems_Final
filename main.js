@@ -103,27 +103,22 @@ map.on("load", async () => {
     revealButton.addEventListener("click", () => {
       revealMode = !revealMode;
 
-      // Toggle visibility of lens layers
       map.setLayoutProperty("osm-poi-lens", "visibility", revealMode ? "visible" : "none");
       map.setLayoutProperty("lens-outline", "visibility", revealMode ? "visible" : "none");
-
-      // Toggle active class on button
       revealButton.classList.toggle("active", revealMode);
 
       if (revealMode) {
-        // Turn off full OSM layer
         map.setLayoutProperty("osm-poi-layer", "visibility", "none");
         osmCheckbox.checked = false;
 
-        // Draw initial lens at center of map
         const canvas = map.getCanvas();
         const rect = canvas.getBoundingClientRect();
         const centerPoint = new mapboxgl.Point(rect.width / 2, rect.height / 2);
         updateLens(centerPoint);
       } else {
-        // Clear lens if turning off
         map.setFilter("osm-poi-lens", ["==", ["get", "id"], "___none___"]);
         map.getSource("lens-rect").setData({ type: "FeatureCollection", features: [] });
+        document.getElementById("osm-count").textContent = 0;
       }
 
       updateCounts();
@@ -137,7 +132,6 @@ map.on("load", async () => {
   }
 });
 
-// Feature count updater
 function updateCounts() {
   const bounds = map.getBounds();
 
@@ -191,6 +185,10 @@ function updateLens(point) {
     type: "FeatureCollection",
     features: [{ type: "Feature", geometry: squarePoly }]
   });
+
+  // Count features in lens using Turf
+  const lensCount = osmFeatures.filter(f => turf.booleanPointInPolygon(f, squarePoly)).length;
+  document.getElementById("osm-count").textContent = lensCount;
 }
 
 // ⬇ Dropdown toggles (unchanged)
