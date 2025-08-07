@@ -129,3 +129,25 @@ label {
   border-left: 3px solid #ccc;
   border-radius: 4px;
 }
+
+
+#toggle-reveal {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  background: white;
+  padding: 6px 12px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Comic Neue', cursive;
+
+}
+
+
+#toggle-reveal.active {
+  background-color: #000;
+  color: white;
+  border-color: #000;
+}
